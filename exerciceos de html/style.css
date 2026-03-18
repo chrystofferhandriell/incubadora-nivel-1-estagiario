@@ -1,0 +1,129 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Verdana, Arial, sans-serif;
+
+      background: linear-gradient(
+        rgba(0,0,0,0.9),
+        rgba(0,0,0,0.9)
+      ),
+      url("fundo-anime.jpg") no-repeat center;
+      background-size: cover;
+      color: #fff;
+    }
+
+    main {
+      width: 100%;
+      max-width: 420px;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 12px;
+      backdrop-filter: blur(8px);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    input {
+      padding: 12px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+      font-size: 14px;
+    }
+
+    input:focus {
+      box-shadow: 0 0 5px #00bfff;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .checkbox input {
+      margin: 0;
+    }
+
+    button {
+      padding: 12px;
+      background: linear-gradient(45deg, #4facfe, #00f2fe);
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .link-login {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .link-login a {
+      color: #00bfff;
+      text-decoration: none;
+    }
+
+    .link-login a:hover {
+      text-decoration: underline;
+    }
+
+    .erro {
+      color: #ff4d4d;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .links {
+      margin-top: 15px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #00bfff;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  
+
+
+
+
+  

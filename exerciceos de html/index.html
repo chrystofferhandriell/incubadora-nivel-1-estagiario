@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre Nós</title>
+
+  <link rel="stylesheet" href="styleindex.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Sobre Nós</h1>
+  <p>Conheça nossa história, missão e equipe</p>
+
+  <a class="btn-login" href="login.html">Login</a>
+</header>
+
+<main>
+
+  <!-- Apresentação -->
+  <section>
+    <article>
+      <h2>Quem Somos</h2>
+      <p>
+        Somos uma plataforma dedicada ao universo dos animes, trazendo conteúdos,
+        novidades e experiências imersivas para fãs de todas as gerações.
+      </p>
+    </article>
+  </section>
+
+  <!-- Missão, visão e valores -->
+  <section>
+    <h2>Missão, Visão e Valores</h2>
+
+    <div class="mvv">
+      <article>
+        <h3>Missão</h3>
+        <p>Levar conteúdo de qualidade sobre animes para todo o mundo.</p>
+      </article>
+
+      <article>
+        <h3>Visão</h3>
+        <p>Ser referência global em plataformas de cultura geek e anime.</p>
+      </article>
+
+      <article>
+        <h3>Valores</h3>
+        <p>Paixão, inovação, comunidade e respeito aos fãs.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Equipe -->
+  <section>
+    <h2>Nossa Equipe</h2>
+
+    <div class="equipe">
+      <article class="membro">
+        <img src="assets/images/user1.jpg" alt="João Silva - Desenvolvedor">
+        <p>João Silva</p>
+      </article>
+
+      <article class="membro">
+        <img src="assets/images/user2.jpg" alt="Maria Souza - Designer">
+        <p>Maria Souza</p>
+      </article>
+
+      <article class="membro">
+        <img src="assets/images/user3.jpg" alt="Carlos Lima - Gerente">
+        <p>Carlos Lima</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section>
+    <h2>Nossa História</h2>
+
+    <div class="timeline">
+      <article class="evento">
+        <h4>2022</h4>
+        <p>Criação do projeto e primeiros conteúdos publicados.</p>
+      </article>
+
+      <article class="evento">
+        <h4>2023</h4>
+        <p>Crescimento da comunidade e expansão do site.</p>
+      </article>
+
+      <article class="evento">
+        <h4>2024</h4>
+        <p>Lançamento oficial com foco em experiência do usuário.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+
+   <div class="cont">
+      <h2>Contato</h2>
+      <p>Fale conosco</p>
+    </div>
+    
+  <section class="contato">
+
+    <div class="contato-container">
+
+      <!-- Formulário -->
+      <form data-validate class="form-contato">
+
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" required>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" required>
+
+        <label for="assunto">Assunto</label>
+        <input type="text" id="assunto" required>
+
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" required></textarea>
+
+        <button type="submit">Enviar</button>
+
+      </form>
+
+      <!-- Informações -->
+      <aside class="info">
+
+        <h3>Informações</h3>
+
+        <p><strong>Telefone:</strong> (11) 99999-9999</p>
+        <p><strong>Endereço:</strong> Rua Anime, 123 - São Paulo, Brasil</p>
+
+        <h4>Horário</h4>
+        <p>Segunda a Sexta: 09:00 - 18:00</p>
+        <p>Sábado: 10:00 - 14:00</p>
+
+        <iframe 
+          src="https://www.google.com/maps?q=São+Paulo&output=embed"
+          title="Mapa mostrando localização da empresa em São Paulo">
+        </iframe>
+
+      </aside>
+
+    </div>
+
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+
+  <div class="newsletter">
+    <h3>Receba novidades</h3>
+
+    <form id="newsletterForm">
+
+      <input type="email" id="emailNews" required placeholder="Seu e-mail">
+
+      <div>
+        <input type="checkbox" id="privacidade" required>
+        <label for="privacidade">Concordo com a política</label>
+      </div>
+
+      <button type="submit">Inscrever</button>
+
+      <p id="msg"></p>
+
+    </form>
+  </div>
+
+</footer>
+
+<script src="newsletter.js"></script>
+
+</body>
+</html>
