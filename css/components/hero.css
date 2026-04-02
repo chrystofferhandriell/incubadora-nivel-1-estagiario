@@ -69,12 +69,33 @@
 .hero__image {
 	position: relative;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+}
+
+.hero__badge-float{
+	margin: 10px 0 0 0 ;
+}
+
+
+.hero__badge-float-text{
+	font-size: 36px;
+    background-color: aqua;
+	padding: 10px;
+	border-radius: 40px;
 }
 
 .hero__img {
 	width: 100%;
 	border-radius: 1.5rem;
 	box-shadow: var(--shadow-xl);
+}
+
+.hero__stats{
+	display: flex;
+}
+
+.hero__stat{
+	margin-left: 20px;
 }

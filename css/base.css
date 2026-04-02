@@ -37,9 +37,15 @@ h4 {
 }
 
 .container {
+	
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 1.5rem;
+	margin-bottom: 40px;
+}
+
+.benefits__grid{
+	display: flex;
 }
 
 .main-content {
