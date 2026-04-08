@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - TechShop</title>
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+  <main class="container" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    
+    <div class="form-card" style="width: 100%; max-width: 400px;">
+      
+      <h1 class="text-center mb-4">Login</h1>
+
+      <form id="loginForm">
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email" class="form__label">E-mail</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form__input"
+            placeholder="Digite seu e-mail"
+            required
+          >
+        </div>
+
+        <!-- Senha -->
+        <div class="form-group">
+          <label for="senha" class="form__label">Senha</label>
+          <input 
+            type="password" 
+            id="senha" 
+            name="senha" 
+            class="form__input"
+            placeholder="Digite sua senha"
+            required
+          >
+        </div>
+
+        <!-- Botão -->
+        <button type="submit" class="btn btn-log w-full mt-3">
+          Entrar
+        </button>
+
+        <!-- Links -->
+        <div class="flex justify-between mt-3" style="font-size: 0.9rem;">
+          <a href="#" class="text-link">Esqueci minha senha</a>
+          <a href="cadastro.html" class="text-link">Criar conta</a>
+        </div>
+
+      </form>
+
+    </div>
+
+  </main>
+
+  <!-- Script -->
+  <script src="/js/log.js"></script>
+
+</body>
+</html>

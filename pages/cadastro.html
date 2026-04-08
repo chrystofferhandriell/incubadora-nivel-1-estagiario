@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro - TechShop</title>
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+  <main class="container" style="min-height: 100vh; display: flex; align-items: center; justify-content: center;">
+    
+    <div class="form-card" style="width: 100%; max-width: 450px;">
+      
+      <h1 class="text-center mb-4">Criar Conta</h1>
+
+      <form id="formCadastro">
+
+        <!-- Mensagem de erro -->
+        <div id="mensagemErro" class="text-danger mb-2"></div>
+
+        <!-- Nome -->
+        <div class="form-group">
+          <label for="nome" class="form__label">Nome completo</label>
+          <input 
+            type="text" 
+            id="nome" 
+            class="form__input"
+            placeholder="Seu nome completo"
+            required
+          >
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email" class="form__label">E-mail</label>
+          <input 
+            type="email" 
+            id="email" 
+            class="form__input"
+            placeholder="Seu e-mail"
+            required
+          >
+        </div>
+
+        <!-- Telefone -->
+        <div class="form-group">
+          <label for="telefone" class="form__label">Telefone (opcional)</label>
+          <input 
+            type="tel" 
+            id="telefone" 
+            class="form__input"
+            placeholder="(00) 00000-0000"
+          >
+        </div>
+
+        <!-- Senha -->
+        <div class="form-group">
+          <label for="senha" class="form__label">Senha</label>
+          <input 
+            type="password" 
+            id="senha" 
+            class="form__input"
+            placeholder="Crie uma senha"
+            required
+          >
+        </div>
+
+        <!-- Confirmar senha -->
+        <div class="form-group">
+          <label for="confirmarSenha" class="form__label">Confirmar senha</label>
+          <input 
+            type="password" 
+            id="confirmarSenha" 
+            class="form__input"
+            placeholder="Repita a senha"
+            required
+          >
+        </div>
+
+        <!-- Termos -->
+        <div class="flex items-center gap-2 mt-2">
+          <input type="checkbox" id="termos">
+          <label for="termos">Aceito os termos de uso</label>
+        </div>
+
+        <!-- Botão -->
+        <button type="submit" class="btn btn-primary w-full mt-3">
+          Cadastrar
+        </button>
+
+        <!-- Link -->
+        <div class="text-center mt-3" style="font-size: 0.9rem;">
+          Já tem conta? 
+          <a href="login.html" class="text-link">Entrar</a>
+        </div>
+
+      </form>
+
+    </div>
+
+  </main>
+
+  <!-- Script -->
+  <script src="/js/cad.js"></script>
+
+</body>
+</html>
