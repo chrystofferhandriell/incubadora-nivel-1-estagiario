@@ -205,7 +205,9 @@
 
 								<!-- Categories -->
 								<div class="filter-group">
-									<label class="filter-group__label">Categorias</label>
+                            <button id="toggleCategoryBtn" class="btn btn-secondary btn-sm w-full">Categorias</button>
+
+                       <div class="filter-options hidden" id="categoryFilters"></div>
 									<div
 										class="filter-options"
 										id="categoryFilters">
@@ -342,6 +344,7 @@
 		<footer class="footer">
 			<div class="footer__container">
 				<div class="footer__grid">
+					<!-- About -->
 					<div class="footer__column">
 						<div class="footer__logo">TechShop</div>
 						<p class="footer__about">
@@ -410,6 +413,7 @@
 						</div>
 					</div>
 
+					<!-- Links -->
 					<div class="footer__column">
 						<h4 class="footer__column-title">Links Rápidos</h4>
 						<ul class="footer__links">
@@ -429,7 +433,7 @@
 							</li>
 							<li>
 								<a
-									href="index.html#ofertas"
+									href="#ofertas"
 									class="footer__link"
 									>Ofertas</a
 								>
@@ -444,6 +448,19 @@
 						</ul>
 					</div>
 
+                    <!--pagamento -->
+                  <div class="footer__payment-methods">
+						<span
+							style="color: var(--color-gray-400); font-size: var(--text-sm)"
+							>Aceitamos:</span
+						>
+						<div class="footer__payment-icon">💳</div>
+						<div class="footer__payment-icon">🏦</div>
+						<div class="footer__payment-icon">📱</div>
+					</div>
+
+
+					<!-- Help -->
 					<div class="footer__column">
 						<h4 class="footer__column-title">Ajuda</h4>
 						<ul class="footer__links">
@@ -478,6 +495,7 @@
 						</ul>
 					</div>
 
+					<!-- Newsletter -->
 					<div class="footer__column">
 						<h4 class="footer__column-title">Newsletter</h4>
 						<p class="footer__about">Receba ofertas exclusivas no seu e-mail</p>
@@ -500,19 +518,12 @@
 					</div>
 				</div>
 
+				<!-- Footer Bottom -->
 				<div class="footer__bottom">
 					<p class="footer__copyright">
 						&copy; 2026 TechShop. Todos os direitos reservados.
 					</p>
-					<div class="footer__payment-methods">
-						<span
-							style="color: var(--color-gray-400); font-size: var(--text-sm)"
-							>Aceitamos:</span
-						>
-						<div class="footer__payment-icon">💳</div>
-						<div class="footer__payment-icon">🏦</div>
-						<div class="footer__payment-icon">📱</div>
-					</div>
+					
 				</div>
 			</div>
 		</footer>
@@ -526,7 +537,7 @@
 		<script src="js/modules/products-gallery.js"></script>
 		<script src="js/modules/handlers.js"></script>
 		<!-- Data & App -->
-		<script src="js/products.js"></script>
+		<script src="/js/products.js"></script>
 		<script src="js/app.js"></script>
 	</body>
 </html>

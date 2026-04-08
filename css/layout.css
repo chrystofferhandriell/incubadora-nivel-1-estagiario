@@ -66,7 +66,7 @@
 
 /* Filter Card */
 .filter-card {
-	background: white;
+	background: rgb(138, 137, 137);
 	border-radius: 1rem;
 	box-shadow: var(--shadow);
 	padding: 1.5rem;
@@ -159,4 +159,27 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 	gap: 1.5rem;
+}
+.product-card__old-price{
+	text-decoration:line-through;
+
+}
+
+.filter-options {
+	transition: all 0.3s ease;
+}
+
+.filter-options.hidden {
+	opacity: 0;
+	max-height: 0;
+	overflow: hidden;
+}
+
+.filter-options:not(.hidden) {
+	opacity: 1;
+	max-height: 500px;
+}
+
+.hidden {
+	display: none;
 }
