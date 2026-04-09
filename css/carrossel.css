@@ -1,0 +1,121 @@
+/* ===============================
+   CARROSSEL
+================================= */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* wrapper melhora controle (importante 🔥) */
+.carousel__track-wrapper {
+  overflow: hidden;
+}
+
+/* trilha */
+.carousel__track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.5s ease;
+  will-change: transform; /* 🔥 melhora performance */
+}
+
+/* ===============================
+   BOTÕES
+================================= */
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+
+  border: none;
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+
+  transition: all 0.3s ease;
+}
+
+/* hover bonito */
+.carousel__btn:hover {
+  background: #000;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* esconder levemente até hover */
+.carousel__btn {
+  opacity: 0.7;
+}
+
+.carousel:hover .carousel__btn {
+  opacity: 1;
+}
+
+.carousel__btn.prev {
+  left: 10px;
+}
+
+.carousel__btn.next {
+  right: 10px;
+}
+
+.carousel__track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.4s ease;
+}
+
+.carousel__track-wrapper {
+  overflow: hidden;
+}
+
+/* ===============================
+   CARD
+================================= */
+.product-card {
+  min-width: 250px;
+  max-width: 300px;
+
+  background: #fff;
+  border-radius: 16px;
+
+  overflow: hidden;
+  padding: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* hover profissional */
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* ===============================
+   IMAGEM (ESSENCIAL 🔥)
+================================= */
+.product-card__image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-card__image {
+  transform: scale(1.05);
+}

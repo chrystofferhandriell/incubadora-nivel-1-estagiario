@@ -24,3 +24,5 @@
 
 /* Responsivo (deve vir por último) */
 @import url("responsive.css");
+/* oferta em destaque*/
+@import url("carrossel.css");

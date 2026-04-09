@@ -108,7 +108,7 @@
 						</li>
 						<li class="header__menu-item">
 							<a
-								href="#contato"
+								href="contato.html"
 								class="header__menu-link"
 								>Contato</a
 							>
@@ -132,7 +132,7 @@
                                    <circle cx="12" cy="7" r="4"></circle>
                                </svg>
                               </a>
-						<button
+						<a href="cart.html"
 							class="header__icon-btn"
 							data-cart-btn
 							aria-label="Carrinho">
@@ -158,7 +158,7 @@
 									d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
 							</svg>
 							<span class="header__cart-badge">0</span>
-						</button>
+						</a>
 					</div>
 				</nav>
 
@@ -249,6 +249,20 @@
 							As melhores promoções selecionadas especialmente para você
 						</p>
 					</div>
+
+				<section class="offers-carousel container">
+                         <h2 class="section__title">🔥 Ofertas em Destaque</h2>
+
+                  <div class="carousel">
+                     <button class="carousel__btn prev">‹</button>
+
+                   <div class="carousel__track" id="offersTrack">
+                    <!-- Produtos serão inseridos aqui -->
+                     </div>
+
+                       <button class="carousel__btn next">›</button>
+                    </div>
+          </section>	
 
 					<div
 						class="offers__grid"
@@ -586,5 +600,6 @@
 		<!-- Data & App -->
 		<script src="js/products.js"></script>
 		<script src="js/app.js"></script>
+		<script src="/js/script-carrossel.js"></script>
 	</body>
 </html>
