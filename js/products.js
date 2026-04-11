@@ -47,39 +47,6 @@ const products = [
 		rating: 4.6,
 		reviews: 203,
 	},
-	{
-		id: 5,
-		name: "Monitor 27\" 144Hz",
-		price: 1299.9,
-		originalPrice: 1799.9,
-		discount: 28,
-		image: "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&q=80",
-		category: "Monitores",
-		rating: 4.9,
-		reviews: 95,
-	},
-	{
-		id: 6,
-		name: "PlayStation 5",
-		price: 4499.9,
-		originalPrice: 4999.9,
-		discount: 10,
-		image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=500&q=80",
-		category: "Games",
-		rating: 4.9,
-		reviews: 990,
-	},
-	{
-		id: 7,
-		name: "Alexa Echo Dot",
-		price: 349.9,
-		originalPrice: 499.9,
-		discount: 30,
-		image: "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?w=500&q=80",
-		category: "Casa Inteligente",
-		rating: 4.8,
-		reviews: 600,
-	},
 ];
 
 // ========================================
@@ -88,6 +55,16 @@ const products = [
 
 const productsGrid = document.getElementById("productsGrid");
 const productsCount = document.getElementById("productsCount");
+
+const searchInput = document.getElementById("searchInput");
+const minPrice = document.getElementById("minPrice");
+const maxPrice = document.getElementById("maxPrice");
+const applyPriceBtn = document.getElementById("applyPriceFilter");
+const clearBtn = document.getElementById("clearFilters");
+const sortSelect = document.getElementById("sortSelect");
+
+const categoryContainer = document.getElementById("categoryFilters");
+const toggleCategoryBtn = document.getElementById("toggleCategoryBtn");
 
 // ========================================
 // UTIL
@@ -100,147 +77,8 @@ function formatCurrency(value) {
 	}).format(value);
 }
 
-
 // ========================================
-// FILTROS
-// ========================================
-
-// elementos do HTML
-const searchInput = document.getElementById("searchInput");
-const minPrice = document.getElementById("minPrice");
-const maxPrice = document.getElementById("maxPrice");
-const applyPriceBtn = document.getElementById("applyPriceFilter");
-const clearBtn = document.getElementById("clearFilters");
-const sortSelect = document.getElementById("sortSelect");
-const categoryContainer = document.getElementById("categoryFilters");
-
-// ========================================
-// GERAR CATEGORIAS AUTOMATICAMENTE
-// ========================================
-
-function renderCategories() {
-	if (!categoryContainer) return;
-
-	const categories = [...new Set(products.map(p => p.category))];
-
-	categoryContainer.innerHTML = categories.map(cat => `
-		<label>
-			<input type="checkbox" value="${cat}" class="category-checkbox">
-			${cat}
-		</label>
-	`).join("");
-}
-
-// ========================================
-// FUNÇÃO PRINCIPAL DE FILTRO
-// ========================================
-
-function applyFilters() {
-	let filtered = [...products];
-
-	// 🔍 BUSCA
-	const search = searchInput?.value.toLowerCase() || "";
-	if (search) {
-		filtered = filtered.filter(p =>
-			p.name.toLowerCase().includes(search)
-		);
-	}
-
-	// 💰 PREÇO
-	const min = parseFloat(minPrice?.value) || 0;
-	const max = parseFloat(maxPrice?.value) || Infinity;
-
-	filtered = filtered.filter(p =>
-		p.price >= min && p.price <= max
-	);
-
-	// 🏷️ CATEGORIA
-	const selectedCategories = [...document.querySelectorAll(".category-checkbox:checked")]
-		.map(el => el.value);
-
-	if (selectedCategories.length > 0) {
-		filtered = filtered.filter(p =>
-			selectedCategories.includes(p.category)
-		);
-	}
-
-	const toggleCategoryBtn = document.getElementById("toggleCategoryBtn");
-const categoryFilters = document.getElementById("categoryFilters");
-
-// toggle (abre/fecha)
-toggleCategoryBtn.addEventListener("click", () => {
-	categoryFilters.classList.toggle("hidden");
-});
-
-	// 🔃 ORDENAÇÃO
-	switch (sortSelect?.value) {
-		case "price-asc":
-			filtered.sort((a, b) => a.price - b.price);
-			break;
-		case "price-desc":
-			filtered.sort((a, b) => b.price - a.price);
-			break;
-		case "name-asc":
-			filtered.sort((a, b) => a.name.localeCompare(b.name));
-			break;
-		case "name-desc":
-			filtered.sort((a, b) => b.name.localeCompare(a.name));
-			break;
-		case "rating":
-			filtered.sort((a, b) => b.rating - a.rating);
-			break;
-	}
-
-	renderProducts(filtered);
-}
-
-// ========================================
-// EVENTOS
-// ========================================
-
-function initFilters() {
-	// busca em tempo real
-	searchInput?.addEventListener("input", applyFilters);
-
-	// botão preço
-	applyPriceBtn?.addEventListener("click", applyFilters);
-
-	// ordenação
-	sortSelect?.addEventListener("change", applyFilters);
-
-	// categorias
-	document.addEventListener("change", (e) => {
-		if (e.target.classList.contains("category-checkbox")) {
-			applyFilters();
-		}
-	});
-
-	// limpar filtros
-	clearBtn?.addEventListener("click", () => {
-		if (searchInput) searchInput.value = "";
-		if (minPrice) minPrice.value = "";
-		if (maxPrice) maxPrice.value = "";
-		if (sortSelect) sortSelect.value = "default";
-
-		document.querySelectorAll(".category-checkbox")
-			.forEach(cb => cb.checked = false);
-
-		renderProducts(products);
-	});
-}
-
-// ========================================
-// INICIALIZAÇÃO FINAL
-// ========================================
-
-document.addEventListener("DOMContentLoaded", () => {
-	renderProducts(products);
-	renderCategories(); // 🔥 cria categorias automaticamente
-	initFilters();      // 🔥 ativa filtros
-});
-
-// ========================================
-// RENDER
+// RENDER PRODUTOS
 // ========================================
 
 function createProductCard(product) {
@@ -269,14 +107,19 @@ function createProductCard(product) {
 						<span class="product-card__price">
 							${formatCurrency(product.price)}
 						</span>
-						<span class="product-card__old-price">
-							${formatCurrency(product.originalPrice)}
-						</span>
+						${
+							product.originalPrice
+								? `<span class="product-card__old-price">
+									${formatCurrency(product.originalPrice)}
+								  </span>`
+								: ""
+						}
 					</div>
 
-					<button class="btn btn-primary btn-sm">
-						Comprar
-					</button>
+					<button class="btn btn-primary btn-sm" onclick='addToCart(${JSON.stringify(product)})' >
+                       Comprar
+                </button>
+
 				</div>
 			</div>
 		</div>
@@ -284,23 +127,130 @@ function createProductCard(product) {
 }
 
 function renderProducts(list) {
-	if (!productsGrid) {
-		console.error("Elemento productsGrid não encontrado!");
-		return;
-	}
+	if (!productsGrid) return;
 
-	if (list.length === 0) {
-		productsGrid.innerHTML = "<p>Nenhum produto encontrado</p>";
-		return;
-	}
-
-	const html = list.map(createProductCard).join("");
-	productsGrid.innerHTML = html;
+	productsGrid.innerHTML = list.map(createProductCard).join("");
 
 	if (productsCount) {
 		productsCount.textContent = `${list.length} produtos encontrados`;
 	}
 }
 
+// ========================================
+// CATEGORIAS (FIXO 🔥)
+// ========================================
 
+function renderCategories() {
+	if (!categoryContainer) return;
 
+	const categories = [...new Set(products.map(p => p.category))];
+
+	categoryContainer.innerHTML = categories.map(cat => `
+		<label>
+			<input type="checkbox" value="${cat}" class="category-checkbox">
+			${cat}
+		</label>
+	`).join("");
+}
+
+// ========================================
+// FILTROS
+// ========================================
+
+function applyFilters() {
+	let filtered = [...products];
+
+	// busca
+	const search = searchInput?.value.toLowerCase() || "";
+	if (search) {
+		filtered = filtered.filter(p =>
+			p.name.toLowerCase().includes(search)
+		);
+	}
+
+	// preço
+	const min = parseFloat(minPrice?.value) || 0;
+	const max = parseFloat(maxPrice?.value) || Infinity;
+
+	filtered = filtered.filter(p =>
+		p.price >= min && p.price <= max
+	);
+
+	// categorias
+	const selectedCategories = [...document.querySelectorAll(".category-checkbox:checked")]
+		.map(el => el.value);
+
+	if (selectedCategories.length > 0) {
+		filtered = filtered.filter(p =>
+			selectedCategories.includes(p.category)
+		);
+	}
+
+	// ordenação
+	switch (sortSelect?.value) {
+		case "price-asc":
+			filtered.sort((a, b) => a.price - b.price);
+			break;
+		case "price-desc":
+			filtered.sort((a, b) => b.price - a.price);
+			break;
+		case "name-asc":
+			filtered.sort((a, b) => a.name.localeCompare(b.name));
+			break;
+		case "name-desc":
+			filtered.sort((a, b) => b.name.localeCompare(a.name));
+			break;
+	}
+
+	renderProducts(filtered);
+}
+
+// ========================================
+// EVENTOS
+// ========================================
+
+function initEvents() {
+	// busca
+	searchInput?.addEventListener("input", applyFilters);
+
+	// preço
+	applyPriceBtn?.addEventListener("click", applyFilters);
+
+	// ordenação
+	sortSelect?.addEventListener("change", applyFilters);
+
+	// categorias (delegação)
+	document.addEventListener("change", (e) => {
+		if (e.target.classList.contains("category-checkbox")) {
+			applyFilters();
+		}
+	});
+
+	// limpar
+	clearBtn?.addEventListener("click", () => {
+		searchInput.value = "";
+		minPrice.value = "";
+		maxPrice.value = "";
+		sortSelect.value = "default";
+
+		document.querySelectorAll(".category-checkbox")
+			.forEach(cb => cb.checked = false);
+
+		renderProducts(products);
+	});
+
+	// 🔥 TOGGLE CATEGORIAS (AGORA CORRETO)
+	toggleCategoryBtn?.addEventListener("click", () => {
+		categoryContainer.classList.toggle("hidden");
+	});
+}
+
+// ========================================
+// INIT
+// ========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+	renderProducts(products);
+	renderCategories();
+	initEvents();
+});

@@ -81,7 +81,8 @@
 
 .hero__badge-float-text{
 	font-size: 36px;
-    background-color: aqua;
+    background-color:#ef4444;
+	color: white;
 	padding: 10px;
 	border-radius: 40px;
 }
