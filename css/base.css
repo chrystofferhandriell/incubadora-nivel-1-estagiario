@@ -1,3 +1,17 @@
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+.product-card {
+  background: var(--card);
+}
+
+button {
+  background: var(--primary);
+}
+
+
 /* ========================================
    BASE - Estilos fundamentais
    ======================================== */

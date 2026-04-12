@@ -1,42 +1,269 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Carrinho</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
-
 <body>
+  <main class="container cart-page">
 
-<main class="container">
-  <h1>🛒 Seu Carrinho</h1>
+  <h1 class="cart-title">🛒 Seu Carrinho</h1>
 
-  <div id="cartItems"></div>
+  <div class="cart-layout">
 
-  <div class="cart-summary">
-    <h2>Total: <span id="cartTotal">R$ 0,00</span></h2>
+    <!-- 🛍️ LISTA DE PRODUTOS -->
+    <section class="cart-items">
 
-    <!-- CUPOM -->
-    <input type="text" id="coupon" placeholder="Cupom de desconto">
-    <button onclick="applyCoupon()">Aplicar</button>
+      <div class="cart-header">
+        <h2>Itens no carrinho</h2>
+        <span id="cartCount"></span>
+      </div>
 
-    <h3 id="discountValue"></h3>
+      <div id="cartItems"></div>
 
-    <!-- PAGAMENTO -->
-    <select id="paymentMethod">
-      <option value="credit">Cartão de Crédito</option>
-      <option value="pix">PIX (10% OFF)</option>
-      <option value="boleto">Boleto</option>
-    </select>
+    </section>
 
-    <button onclick="checkout()" class="btn btn-primary w-full mt-3">
-      Finalizar Compra
-    </button>
+    <!-- 💳 RESUMO -->
+    <aside class="cart-summary">
+
+      <h2>Resumo do pedido</h2>
+
+      <div class="summary-line">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">R$ 0,00</span>
+      </div>
+
+      <div class="summary-line">
+        <span>Frete</span>
+        <span id="cartShipping">R$ 0,00</span>
+      </div>
+
+      <div class="summary-line discount">
+        <span>Desconto</span>
+        <span id="discountValue">R$ 0,00</span>
+      </div>
+
+      <hr>
+
+      <div class="summary-total">
+        <span>Total</span>
+        <strong id="cartTotal">R$ 0,00</strong>
+      </div>
+
+      <!-- CUPOM -->
+      <div class="coupon-box">
+        <input type="text" id="coupon" placeholder="Cupom de desconto">
+        <button onclick="applyCoupon()">Aplicar</button>
+      </div>
+
+      <!-- PAGAMENTO -->
+      <div class="payment-box">
+        <label>Forma de pagamento</label>
+        <select id="paymentMethod">
+          <option value="credit">Cartão de Crédito</option>
+          <option value="pix">PIX (10% OFF)</option>
+          <option value="boleto">Boleto</option>
+        </select>
+      </div>
+
+      <!-- BOTÃO -->
+      <button class="btn btn-primary w-full checkout-btn">
+        Finalizar Compra
+      </button>
+
+    </aside>
+
   </div>
+    <!-- Footer -->
+		<footer class="footer">
+			<div class="footer__container">
+				<div class="footer__grid">
+					<!-- About -->
+					<div class="footer__column">
+						<div class="footer__logo">TechShop</div>
+						<p class="footer__about">
+							Sua loja online de tecnologia com os melhores produtos e as
+							melhores ofertas.
+						</p>
+						<div class="footer__social">
+							<a
+								href="#"
+								class="footer__social-link"
+								aria-label="Facebook">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="currentColor">
+									<path
+										d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+								</svg>
+							</a>
+							<a
+								href="#"
+								class="footer__social-link"
+								aria-label="Instagram">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round">
+									<rect
+										x="2"
+										y="2"
+										width="20"
+										height="20"
+										rx="5"
+										ry="5"></rect>
+									<path
+										d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+									<line
+										x1="17.5"
+										y1="6.5"
+										x2="17.51"
+										y2="6.5"></line>
+								</svg>
+							</a>
+							<a
+								href="#"
+								class="footer__social-link"
+								aria-label="Twitter">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="20"
+									height="20"
+									viewBox="0 0 24 24"
+									fill="currentColor">
+									<path
+										d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+								</svg>
+							</a>
+						</div>
+					</div>
+
+					<!-- Links -->
+					<div class="footer__column">
+						<h4 class="footer__column-title">Links Rápidos</h4>
+						<ul class="footer__links">
+							<li>
+								<a
+									href="index.html"
+									class="footer__link"
+									>Home</a
+								>
+							</li>
+							<li>
+								<a
+									href="products.html"
+									class="footer__link"
+									>Produtos</a
+								>
+							</li>
+							<li>
+								<a
+									href="#ofertas"
+									class="footer__link"
+									>Ofertas</a
+								>
+							</li>
+							<li>
+								<a
+									href="#"
+									class="footer__link"
+									>Sobre Nós</a
+								>
+							</li>
+						</ul>
+					</div>
+
+                    <!--pagamento -->
+                  <div class="footer__payment-methods">
+						<span
+							style="color: var(--color-gray-400); font-size: var(--text-sm)"
+							>Aceitamos:</span
+						>
+						<div class="footer__payment-icon">💳</div>
+						<div class="footer__payment-icon">🏦</div>
+						<div class="footer__payment-icon">📱</div>
+					</div>
+
+
+					<!-- Help -->
+					<div class="footer__column">
+						<h4 class="footer__column-title">Ajuda</h4>
+						<ul class="footer__links">
+							<li>
+								<a
+									href="#"
+									class="footer__link"
+									>FAQ</a
+								>
+							</li>
+							<li>
+								<a
+									href="#"
+									class="footer__link"
+									>Envio e Entrega</a
+								>
+							</li>
+							<li>
+								<a
+									href="#"
+									class="footer__link"
+									>Política de Devolução</a
+								>
+							</li>
+							<li>
+								<a
+									href="#"
+									class="footer__link"
+									>Rastreamento</a
+								>
+							</li>
+						</ul>
+					</div>
+
+					<!-- Newsletter -->
+					<div class="footer__column">
+						<h4 class="footer__column-title">Newsletter</h4>
+						<p class="footer__about">Receba ofertas exclusivas no seu e-mail</p>
+						<form
+							class="footer__newsletter-form"
+							data-validate
+							id="newsletterForm">
+							<input
+								type="email"
+								name="email"
+								class="footer__newsletter-input"
+								placeholder="Seu e-mail"
+								required />
+							<button
+								type="submit"
+								class="footer__newsletter-btn">
+								Inscrever
+							</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- Footer Bottom -->
+				<div class="footer__bottom">
+					<p class="footer__copyright">
+						&copy; 2026 TechShop. Todos os direitos reservados.
+					</p>
+					
+				</div>
+			</div>
+		</footer>
+   <script src="/js/cart.js"></script>
 </main>
-
-<script src="/js/cart.js"></script>
-<script src="/js/cart-page.js"></script>
-
 </body>
 </html>

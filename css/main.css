@@ -26,3 +26,6 @@
 @import url("responsive.css");
 /* oferta em destaque*/
 @import url("carrossel.css");
+/* carrinho */
+@import url("carrinho.css");
+@import url(style-dark&light.css);

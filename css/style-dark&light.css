@@ -1,0 +1,16 @@
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+header{
+    background: var(--bg);
+  color: var(--text);
+}
+
+.product-card {
+  background: var(--card);
+}
+
+button {
+  background: var(--primary);
+}

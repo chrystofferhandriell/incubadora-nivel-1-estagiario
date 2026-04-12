@@ -116,8 +116,9 @@ function createProductCard(product) {
 						}
 					</div>
 
-					<button class="btn btn-primary btn-sm" onclick='addToCart(${JSON.stringify(product)})' >
-                       Comprar
+
+				<button class="btn btn-primary" onclick='addToCart(${JSON.stringify(product)})'>
+                Comprar
                 </button>
 
 				</div>

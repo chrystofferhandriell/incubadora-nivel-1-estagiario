@@ -1,0 +1,101 @@
+.cart-page {
+  padding: 40px 0;
+}
+
+.cart-title {
+  margin-bottom: 20px;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* LISTA */
+.cart-items {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+/* ITEM */
+.cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.cart-item__image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart-item__info h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.cart-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.cart-controls button {
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+/* RESUMO */
+.cart-summary {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.summary-line,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.summary-total {
+  font-size: 18px;
+}
+
+/* CUPOM */
+.coupon-box {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.coupon-box input {
+  flex: 1;
+  padding: 8px;
+}
+
+/* PAGAMENTO */
+.payment-box {
+  margin: 15px 0;
+}
+
+.checkout-btn {
+  margin-top: 10px;
+  font-size: 16px;
+}
