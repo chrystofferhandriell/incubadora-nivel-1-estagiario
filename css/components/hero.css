@@ -4,12 +4,7 @@
 
 .hero {
 	padding: 5rem 0;
-	background: linear-gradient(
-		135deg,
-		var(--gray-50) 0%,
-		white 50%,
-		var(--gray-100) 100%
-	);
+	
 }
 
 .hero__container {

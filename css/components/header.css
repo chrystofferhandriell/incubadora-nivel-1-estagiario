@@ -8,7 +8,7 @@
 	left: 0;
 	right: 0;
 	height: 80px;
-	background: white;
+	background: var(--gray-50);
 	box-shadow: var(--shadow);
 	z-index: 100;
 }
@@ -121,7 +121,7 @@
 	justify-content: center;
 	padding: 0 0.25rem;
 	background: var(--error);
-	color: white;
+	color:var(--gray-900);
 	font-size: 0.75rem;
 	font-weight: 700;
 	border-radius: 10px;
@@ -163,7 +163,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background: rgba(0, 0, 0, 0.5);
+	background:var(--gray-900);
 	z-index: 99;
 	opacity: 0;
 	transition: opacity 0.3s;

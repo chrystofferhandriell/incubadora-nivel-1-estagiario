@@ -3,8 +3,8 @@
    ======================================== */
 
 .footer {
-	background: var(--gray-800);
-	color: white;
+	background: var(--gray-50);
+	color: var(--gray-50);
 	padding: 4rem 0 1.5rem;
 	margin-top: auto;
 }
@@ -24,7 +24,7 @@
 .footer__column-title {
 	font-size: 1.125rem;
 	font-weight: 600;
-	color: white;
+	color:var(--gray-50);
 	margin-bottom: 1rem;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .footer__link {
-	color: var(--gray-300);
+	color: var(--gray-900);
 	font-size: 0.875rem;
 	transition: color 0.2s;
 }
@@ -46,7 +46,7 @@
 }
 
 .footer__about {
-	color: var(--gray-300);
+	color: var(--gray-900);
 	font-size: 0.875rem;
 	line-height: 1.75;
 }
@@ -71,7 +71,7 @@
 	justify-content: center;
 	width: 40px;
 	height: 40px;
-	background: rgba(255, 255, 255, 0.1);
+	background: var(--gray-900);
 	border-radius: 50%;
 	transition: all 0.2s;
 }
@@ -88,7 +88,7 @@
 
 .footer__bottom {
 	padding-top: 1.5rem;
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-top: 1px solid var(--gray-900);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -96,7 +96,17 @@
 	gap: 1rem;
 }
 
+.footer__newsletter-btn{
+	margin: 10px 0 0 0;
+	padding: 10px;
+	border-radius: 20px;
+}
+
+.footer__newsletter-btn:hover{
+      background: var( --secondary);
+}
+
 .footer__copyright {
-	color: var(--gray-400);
+	color: var(--gray-900);
 	font-size: 0.875rem;
 }
