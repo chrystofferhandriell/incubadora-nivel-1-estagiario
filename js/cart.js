@@ -4,9 +4,23 @@
 const CART_KEY = "cart";
 
 // ======================================
-// DADOS
+// LOAD
 // ======================================
-let cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+function getCart() {
+  try {
+    const data = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+
+    return data.map(item => ({
+      ...item,
+      quantity: item.quantity || item.qty || 1
+    }));
+
+  } catch {
+    return [];
+  }
+}
+
+let cart = getCart();
 
 // ======================================
 // UTIL
@@ -15,11 +29,11 @@ function formatCurrency(value) {
   return new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
-  }).format(value);
+  }).format(value || 0);
 }
 
 // ======================================
-// SALVAR
+// SAVE
 // ======================================
 function saveCart() {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
@@ -27,22 +41,31 @@ function saveCart() {
 }
 
 // ======================================
-// ADICIONAR AO CARRINHO
+// ADD
 // ======================================
 function addToCart(product) {
+  if (!product || !product.id) return;
+
   const existing = cart.find(item => item.id === product.id);
 
   if (existing) {
-    existing.quantity++;
+    existing.quantity += 1;
   } else {
-    cart.push({ ...product, quantity: 1 });
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price || 0,
+      image: product.image || "",
+      quantity: 1
+    });
   }
 
   saveCart();
+  showToast("Produto adicionado ao carrinho 🛒");
 }
 
 // ======================================
-// REMOVER
+// REMOVE
 // ======================================
 function removeFromCart(id) {
   cart = cart.filter(item => item.id !== id);
@@ -51,7 +74,7 @@ function removeFromCart(id) {
 }
 
 // ======================================
-// ATUALIZAR QUANTIDADE
+// UPDATE QTD
 // ======================================
 function updateQuantity(id, quantity) {
   const item = cart.find(p => p.id === id);
@@ -64,12 +87,13 @@ function updateQuantity(id, quantity) {
   }
 
   item.quantity = quantity;
+
   saveCart();
   renderCart();
 }
 
 // ======================================
-// TOTAL PRODUTOS
+// TOTALS
 // ======================================
 function getSubtotal() {
   return cart.reduce((total, item) => {
@@ -77,23 +101,14 @@ function getSubtotal() {
   }, 0);
 }
 
-// ======================================
-// FRETE
-// ======================================
 function calculateShipping(subtotal) {
   if (subtotal === 0) return 0;
-
-  if (subtotal >= 300) return 0; // frete grátis
-  return 20;
+  return subtotal >= 300 ? 0 : 20;
 }
 
-// ======================================
-// TOTAL FINAL
-// ======================================
 function getTotal() {
   const subtotal = getSubtotal();
-  const shipping = calculateShipping(subtotal);
-  return subtotal + shipping;
+  return subtotal + calculateShipping(subtotal);
 }
 
 // ======================================
@@ -101,31 +116,29 @@ function getTotal() {
 // ======================================
 function updateCartBadge() {
   const badge = document.querySelector(".header__cart-badge");
-  if (!badge) return;
+  const cartCount = document.getElementById("cartCount");
 
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-  badge.textContent = totalItems;
-  badge.style.display = totalItems > 0 ? "flex" : "none";
+  if (badge) {
+    badge.style.display = totalItems > 0 ? "flex" : "none";
+  }
+
+  if (cartCount) {
+    cartCount.textContent = totalItems;
+  }
 }
 
 // ======================================
-// RENDER DO CARRINHO
+// RENDER
 // ======================================
 function renderCart() {
   const container = document.getElementById("cartItems");
   const subtotalEl = document.getElementById("cartSubtotal");
   const shippingEl = document.getElementById("cartShipping");
   const totalEl = document.getElementById("cartTotal");
-  const cartCount = document.getElementById("cartCount"); // 🔥 NOVO
 
   if (!container) return;
-
-  // 🔥 CONTADOR TOTAL (estilo Amazon)
-  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-  if (cartCount) {
-    cartCount.textContent = `${totalItems} itens`;
-  }
 
   if (cart.length === 0) {
     container.innerHTML = "<p>Carrinho vazio 🛒</p>";
@@ -139,7 +152,6 @@ function renderCart() {
 
   container.innerHTML = cart.map(item => `
     <div class="cart-item">
-      
       <img src="${item.image}" class="cart-item__image" />
 
       <div class="cart-item__info">
@@ -157,7 +169,6 @@ function renderCart() {
         <strong>${formatCurrency(item.price * item.quantity)}</strong>
         <button onclick="removeFromCart(${item.id})">Remover</button>
       </div>
-
     </div>
   `).join("");
 
@@ -168,6 +179,23 @@ function renderCart() {
   if (subtotalEl) subtotalEl.textContent = formatCurrency(subtotal);
   if (shippingEl) shippingEl.textContent = shipping === 0 ? "Grátis" : formatCurrency(shipping);
   if (totalEl) totalEl.textContent = formatCurrency(total);
+}
+
+// ======================================
+// TOAST
+// ======================================
+function showToast(message) {
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  toast.textContent = message;
+
+  document.body.appendChild(toast);
+
+  setTimeout(() => toast.classList.add("show"), 100);
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 300);
+  }, 2500);
 }
 
 // ======================================
